@@ -1,0 +1,170 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling for brutalism */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #000;
+  font-family: 'Courier New', Courier, monospace;
+  color: #fff;
+}
+
+/* Brutalist container */
+.brutalist-container {
+  padding: 50px;
+  background-color: #fffb00;
+  border: 8px solid #ff0000;
+  text-align: left;
+  width: 80%;
+  transform: rotate(-1deg);
+}
+
+/* Brutalist profile picture */
+.brutalist-profile {
+  display: block;
+  width: 150px;
+  height: 150px;
+  border: 5px solid #ff0000;
+  border-radius: 0px; /* No rounded edges to fit the brutalist theme */
+  margin: 0 auto 20px auto;
+  transform: rotate(10deg); /* Randomly tilted */
+  transition: transform 0.3s ease;
+}
+
+.brutalist-profile:hover {
+  transform: rotate(-15deg) scale(1.2); /* Extreme tilt and scale on hover */
+}
+
+/* Brutalist header - bigger, more erratic */
+.brutalist-header {
+  font-size: 5rem;
+  color: #ff0000;
+  text-transform: uppercase;
+  letter-spacing: -5px;
+  margin-bottom: 20px;
+  animation: glitchy-move 1.5s infinite ease-in-out;
+}
+
+/* Header shakes and jumps randomly */
+@keyframes glitchy-move {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-10px, 5px); }
+  40% { transform: translate(10px, -5px); }
+  60% { transform: translate(-15px, 10px); }
+  80% { transform: translate(15px, -10px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Nonsense description */
+.nonsense-desc {
+  font-size: 2rem;
+  color: #00ff00;
+  margin-bottom: 50px;
+  text-align: right;
+  animation: colorShift 2s infinite;
+}
+
+/* Color-shifting description */
+@keyframes colorShift {
+  0% { color: #00ff00; }
+  50% { color: #ff00ff; }
+  100% { color: #00ffff; }
+}
+
+/* Brutalist buttons */
+.brutalist-button {
+  display: block;
+  margin: 10px;
+  padding: 20px 0;
+  font-size: 2rem;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  border: 3px solid #ff0000;
+  transition: all 0.5s ease;
+  position: relative;
+  transform: rotate(3deg);
+}
+
+.brutalist-button:hover {
+  background-color: #fffb00;
+  color: #000;
+  border-color: #00ff00;
+  transform: rotate(-10deg) scale(1.5); /* Increase size and rotate on hover */
+}
+
+/* Full-page color flip on hover */
+.brutalist-button:hover ~ body {
+  background-color: #ff00ff;
+}
+
+/* Mobile friendly adjustments */
+@media (max-width: 768px) {
+  body {
+      padding: 20px;
+  }
+
+  .brutalist-container {
+      transform: none;
+  }
+
+  .brutalist-header {
+      font-size: 3rem;
+  }
+
+  .brutalist-button {
+      font-size: 1.5rem;
+      padding: 10px 15px;
+  }
+
+  .brutalist-profile {
+      width: 100px;
+      height: 100px;
+      transform: none; /* Remove tilt on mobile */
+  }
+}
+
+/* Crazy Brutalist Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 30px; /* Make it thick and obnoxious */
+  height: 30px; /* If horizontal scrollbar appears */
+}
+
+::-webkit-scrollbar-track {
+  background: #ff0000; /* Harsh red track */
+  border: 5px solid #000; /* Bold black border around the track */
+  box-shadow: inset 0 0 10px #ffff00, inset 0 0 5px #00ff00; /* Glowing harsh shadows */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #ff00ff, #00ff00, #ffff00); /* Flashy gradient */
+  border: 5px solid #000; /* Bold black border around the thumb */
+  border-radius: 10px; /* Sharp but slightly rounded */
+  animation: thumbMove 2s infinite ease-in-out; /* Make it move randomly */
+  transition: background-color 0.3s ease; /* Color changes on hover */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #ff0000, #00ffff); /* Colors shift on hover */
+  transform: scale(1.2) rotate(20deg); /* Thumb scales up and rotates */
+}
+
+::-webkit-scrollbar-corner {
+  background: #000; /* Fill the corner with black */
+}
+
+/* Keyframe animations for the thumb moving erratically */
+@keyframes thumbMove {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  25% { transform: translateX(5px) translateY(-5px) rotate(5deg); }
+  50% { transform: translateX(-10px) translateY(10px) rotate(-5deg); }
+  75% { transform: translateX(10px) translateY(-10px) rotate(10deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
