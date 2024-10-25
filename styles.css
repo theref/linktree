@@ -1,0 +1,211 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Light mode styling with gradient background */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #fde2e4, #fadadd); /* Pink gradient for light mode */
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Root variables for light mode */
+:root {
+    --text-color: #333;
+    --button-bg: #d881a3;
+    --button-hover-bg: #c66b92;
+    --container-bg: rgba(255, 255, 255, 0.9);
+    --scrollbar-track: #f0f0f0;
+    --scrollbar-thumb: #d881a3;
+}
+
+/* Dark mode styling applied to body */
+body[data-theme="dark"] {
+    --text-color: #f0f0f0;
+    --button-bg: #c66b92;
+    --button-hover-bg: #a25578;
+    --container-bg: rgba(0, 0, 0, 0.7);
+    --scrollbar-track: #333;
+    --scrollbar-thumb: #a25578;
+    background: linear-gradient(135deg, #3a2b3e, #2a1f2d); /* Darker pink/purple gradient for dark mode */
+}
+
+/* Container styling */
+.container {
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 100%;
+    background: var(--container-bg);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Profile picture styling */
+.profile-picture {
+    width: 70px; /* Adjust size for better fit */
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid var(--button-bg);
+    margin: 0 auto 15px auto; /* Center horizontally */
+    display: block;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Light Mode Profile Picture */
+.profile-picture[src="ar-io-logo-dark.png"] {
+    background-image: url('ar-io-logo-dark.png');
+}
+
+/* Dark Mode Profile Picture */
+body[data-theme="dark"] .profile-picture {
+    background-image: url('ar-io-logo-light.png');
+}
+
+/* Header Title */
+.header-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+/* Description */
+.description {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+/* Links section */
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Button styling */
+.button {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    background-color: var(--button-bg);
+    color: #fff;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: var(--button-hover-bg);
+    transform: scale(1.05);
+}
+
+/* Light/Dark mode toggle */
+.mode-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* Toggle switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #d881a3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Custom scrollbar styling */
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 6px;
+    border: 3px solid var(--container-bg);
+}
+
+/* Responsive styling for mobile devices */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .header-title {
+        font-size: 1.5rem;
+    }
+
+    .description {
+        font-size: 0.9rem;
+    }
+
+    .button {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .profile-picture {
+        width: 60px;
+        height: 60px;
+    }
+}
