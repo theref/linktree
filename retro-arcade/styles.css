@@ -1,0 +1,253 @@
+/* Body styling */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Let the body grow if necessary */
+  background: radial-gradient(circle, #001f3f, #000000); /* Dark gradient background */
+  font-family: 'Press Start 2P', cursive; /* Retro pixelated font */
+  color: #fff;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: auto; /* Allow vertical scroll only when needed */
+  margin: 0; /* Remove any default margins */
+}
+
+.falling-pixels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.pixel {
+  width: 3px;
+  height: 3px;
+  background-color: #00ff00;
+  position: absolute;
+  top: -10px;
+  animation: fall linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes fall {
+  0% {
+      transform: translateY(0);
+      opacity: 0.7;
+  }
+  100% {
+      transform: translateY(100vh);
+      opacity: 0;
+  }
+}
+
+/* Add retro scanlines effect */
+.scanlines {
+  background: repeating-linear-gradient(
+      transparent, 
+      transparent 2px, 
+      rgba(0, 0, 0, 0.1) 3px
+  );
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Arcade frame styling */
+.arcade-frame {
+  text-align: center;
+  background-color: #151515;
+  padding: 20px;
+  border: 3px solid #ff00ff; /* Neon pink border */
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px #ff00ff;
+  animation: glow 1.5s infinite alternate; /* Pulsing glow */
+  max-width: 400px;
+  width: 100%;
+  margin: auto; /* Center horizontally */
+}
+
+/* Glowing arcade header */
+.arcade-header {
+  font-size: 2.2rem;
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff; /* Bright cyan glow */
+  animation: flicker 1s infinite alternate;
+  margin-bottom: 20px;
+}
+
+/* Profile picture */
+.profile-picture {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #00ff00;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 15px #00ff00;
+  animation: rotate 4s linear infinite;
+}
+
+/* Centering the arcade description text */
+.arcade-desc {
+  font-size: 1rem; /* Smaller on mobile */
+  color: #ff00ff;
+  text-shadow: 0 0 5px #ff00ff;
+  animation: flash 1.5s infinite;
+  margin-bottom: 15px;
+  text-align: center; /* Center the description */
+  max-width: 100%; /* Ensure it fits within the arcade frame */
+}
+@keyframes flash {
+  0% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0.5;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+/* Centering the links in the arcade frame */
+.links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the buttons */
+}
+
+/* Arcade button */
+.arcade-button {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #000;
+  background-color: #00ffff;
+  border: 2px solid #00ff00;
+  border-radius: 10px;
+  transition: transform 0.2s ease-in-out;
+  animation: bounce 2s infinite;
+  box-shadow: 0px 0px 10px #00ff00;
+}
+
+/* Button hover */
+.arcade-button:hover {
+  transform: scale(1.1) rotate(3deg); /* Fun, bouncy interaction */
+}
+
+/* Glowing animations for the frame */
+@keyframes glow {
+  from {
+      box-shadow: 0px 0px 10px #ff00ff;
+  }
+  to {
+      box-shadow: 0px 0px 20px #00ffff;
+  }
+}
+
+/* Typewriter effect for text */
+@keyframes typewriter {
+  0% {
+      width: 0;
+  }
+  100% {
+      width: 100%;
+  }
+}
+
+/* Flicker effect */
+@keyframes flicker {
+  0%, 100% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0.4;
+  }
+}
+
+/* Rotation effect for avatar */
+@keyframes rotate {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+/* Bouncing effect for buttons */
+@keyframes bounce {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ff00ff;
+  border-radius: 6px;
+  border: 3px solid #00ffff;
+}
+
+/* Responsive styling for mobile devices */
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+
+  .arcade-frame {
+    padding: 15px;
+    width: 90%; /* Make sure it fills the mobile screen */
+    max-width: 100%; /* Remove max-width limit on mobile */
+    margin: auto; /* Center the frame */
+  }
+
+  .arcade-header {
+    font-size: 1.8rem; /* Smaller header font */
+  }
+
+  .arcade-button {
+    font-size: 0.9rem; /* Smaller buttons on mobile */
+    padding: 10px 15px; /* Reduced padding */
+  }
+
+  .profile-picture {
+    width: 60px; /* Smaller profile picture on mobile */
+    height: 60px;
+  }
+
+  .arcade-desc {
+    font-size: 0.9rem; /* Smaller description text */
+    width: 200px; /* Smaller profile picture on mobile */
+    margin: auto; /* Center the frame */
+    margin-bottom: 10px;
+  }
+
+  .score-counter {
+    font-size: 1rem; /* Smaller font size for the score counter */
+  }
+}
+
+.score-counter {
+  position: fixed;
+  bottom: 10px;  /* Fix to the bottom */
+  right: 10px;   /* Fix to the right */
+  font-family: 'Press Start 2P', cursive;
+  color: #ff00ff;
+  font-size: 1.2rem;
+  z-index: 1000;  /* Ensure it stays on top */
+}
+
