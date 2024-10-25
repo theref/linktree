@@ -3,11 +3,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh; /* Let the body grow if necessary */
   background: radial-gradient(circle, #001f3f, #000000); /* Dark gradient background */
   font-family: 'Press Start 2P', cursive; /* Retro pixelated font */
   color: #fff;
-  overflow: hidden; /* Prevent unwanted scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: auto; /* Allow vertical scroll only when needed */
+  margin: 0; /* Remove any default margins */
 }
 
 .falling-pixels {
