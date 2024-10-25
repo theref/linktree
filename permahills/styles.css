@@ -1,0 +1,254 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling for light mode with background image */
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url('permahills-light.jpg'); /* Light mode background */
+  background-size: cover; /* Ensure the image covers the full page */
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s, background-image 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 99.9vh;
+  overflow: auto;
+}
+/* Color variables for light and dark mode */
+:root {
+  --text-color: #000;
+  --button-bg: #888;
+  --button-text: #fff;
+  --button-hover-bg: #666;
+}
+
+[data-theme="dark"] body {
+  background-image: url('permahills-dark.jpg'); /* Dark mode background */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  --text-color: #f0f0f0;
+  --button-bg: #333;
+  --button-hover-bg: #555;
+}
+
+/* Container for the content */
+.container {
+  text-align: center;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 400px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8); /* Light transparent background for readability */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+[data-theme="dark"] .container {
+  background-color: rgba(0, 0, 0, 0.7); /* Darker background for dark mode */
+}
+
+/* Profile picture with animated gradient border */
+.profile-picture {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 5px solid transparent;
+  background: var(--border-gradient);
+  background-clip: border-box;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.profile-picture:hover {
+  transform: scale(1.1);
+  border-color: #fafafa; /* Changes border color slightly on hover */
+}
+
+/* Username and description styling */
+.username {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+/* Links section */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Button styling */
+.button {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--button-hover-bg);
+  transform: scale(1.05);
+}
+
+/* Light/Dark mode toggle */
+.mode-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+/* Toggle switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #555;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+      padding: 30px;
+      width: 75%; /* Make sure the content fits within the mobile screen */
+      max-width: 100%; /* Remove any max-width restriction on mobile */
+  }
+
+  .username {
+      font-size: 1.5rem;
+  }
+
+  .description {
+      font-size: 0.9rem;
+  }
+
+  .button {
+      padding: 12px 20px;
+      font-size: 0.9rem;
+  }
+
+  .profile-picture {
+      width: 90px; /* Smaller profile picture on mobile */
+      height: 90px;
+  }
+}
+
+/* Star styling with radial gradient for subtle star effect */
+.star {
+  position: absolute;
+  width: 2px; /* Base size, will be randomized in JavaScript */
+  height: 2px;
+  background: radial-gradient(circle, var(--star-color) 20%, transparent 70%); /* Faint star-like effect */
+  border-radius: 50%; /* Circular shape */
+  opacity: 1; /* Keep opacity consistent */
+  z-index: 0;
+  animation: gentleTwinkle 3s infinite ease-in-out; /* More noticeable twinkle */
+}
+
+/* More pronounced twinkle animation */
+@keyframes gentleTwinkle {
+  0% {
+      transform: scale(1); /* Normal size */
+      filter: brightness(0.8); /* Start dimmer */
+  }
+  50% {
+      transform: scale(1.5); /* Larger at the peak of the twinkle */
+      filter: brightness(1.5); /* Brighter at the peak of the twinkle */
+  }
+  100% {
+      transform: scale(1); /* Back to normal size */
+      filter: brightness(0.8); /* Return to normal brightness */
+  }
+}
+
+/* Light/Dark mode star color */
+:root {
+  --star-color: #333; /* Dark stars for light mode */
+}
+
+[data-theme="dark"] {
+  --star-color: #fff; /* Light stars for dark mode */
+}
+
+/* Custom Scrollbars for Light/Dark Mode */
+:root {
+  --scrollbar-track: #f0f0f0;
+  --scrollbar-thumb: #888;
+}
+
+[data-theme="dark"] {
+  --scrollbar-track: #1a1a1a;
+  --scrollbar-thumb: #555;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 6px;
+  border: 2px solid var(--background-light);
+}
+
+[data-theme="dark"] body::-webkit-scrollbar-thumb {
+  border: 2px solid var(--background-dark);
+}
