@@ -39,7 +39,7 @@ function createFallingPixel() {
     // Remove the pixel after it's done falling to keep the DOM clean
     setTimeout(() => {
         pixel.remove();
-    }, 5000); // Adjust time if needed
+    }, 10000); // Adjust time if needed
 }
 
 // Generate multiple falling pixels at random intervals
