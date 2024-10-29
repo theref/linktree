@@ -28,3 +28,36 @@ window.onload = function() {
         setProfilePicture();
     });
 };
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Find all elements with the data-subdomain attribute
+    const links = document.querySelectorAll('[data-subdomain]');
+    
+    // Get the current host (could be sandboxed, ARNS, or regular)
+    const currentHost = window.location.host;
+
+    // Function to extract the root domain while preserving deeper subdomains (e.g., "another-level-deep.frostor.xyz")
+    function getRootDomain(host) {
+        const parts = host.split('.');
+        if (parts.length > 3) {
+            return parts.slice(1).join('.'); // Preserve all levels except the first subdomain part
+        } else {
+            return parts.slice(-2).join('.'); // Return the last two parts for standard domains
+        }
+    }
+
+    // Get the root domain of the current host (this works for both sandboxed and regular domains)
+    const rootDomain = getRootDomain(currentHost);
+
+    // Loop through each link and dynamically set the href
+    links.forEach(link => {
+        const subdomain = link.getAttribute('data-subdomain'); // Get the desired subdomain (e.g., "ardrive")
+        const path = link.getAttribute('data-path') || ''; // Get the optional path, default to an empty string if not provided
+
+        // Construct the dynamic URL
+        const dynamicURL = `https://${subdomain}.${rootDomain}${path ? '/' + path : ''}`; // Add the path only if it exists
+
+        // Set the href attribute dynamically
+        link.setAttribute('href', dynamicURL);
+    });
+});

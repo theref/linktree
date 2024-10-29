@@ -8,9 +8,9 @@
 /* Light mode styling with gradient background */
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #fde2e4, #fadadd); /* Pink gradient for light mode */
+    background: linear-gradient(135deg, #F7C3A1 0%, #EBAEC6 52%, #DF9BE8 100%); /* Updated gradient for light mode */
     color: var(--text-color);
-    transition: background 0.3s, color 0.3s;
+    transition: 0.3s, color 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,12 +31,12 @@ body {
 /* Dark mode styling applied to body */
 body[data-theme="dark"] {
     --text-color: #f0f0f0;
-    --button-bg: #c66b92;
-    --button-hover-bg: #a25578;
     --container-bg: rgba(0, 0, 0, 0.7);
-    --scrollbar-track: #333;
-    --scrollbar-thumb: #a25578;
-    background: linear-gradient(135deg, #3a2b3e, #2a1f2d); /* Darker pink/purple gradient for dark mode */
+    --scrollbar-track: #1a1a1a;
+    --scrollbar-thumb: #666;
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d); /* Dark grey/black gradient for dark mode */
+    --button-bg: linear-gradient(135deg, #F7C3A1 0%, #EBAEC6 52%, #DF9BE8 100%); /* Updated gradient for light mode */;
+    --button-hover-bg: #666;
 }
 
 /* Container styling */
@@ -181,6 +181,35 @@ body::-webkit-scrollbar-thumb {
     border: 3px solid var(--container-bg);
 }
 
+/* Footer styling */
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.footer p {
+    margin-bottom: 10px; /* Adds space between the paragraph and the links */
+}
+
+.footer a {
+    color: var(--button-bg);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: var(--button-hover-bg);
+}
+
 /* Responsive styling for mobile devices */
 @media (max-width: 768px) {
     body {
@@ -207,5 +236,12 @@ body::-webkit-scrollbar-thumb {
     .profile-picture {
         width: 60px;
         height: 60px;
+    }
+    .footer {
+        font-size: 0.8rem;
+        bottom: 0px; /* Adjust for better positioning on smaller screens */
+    }
+    .footer a {
+        margin: 0 5px;
     }
 }
